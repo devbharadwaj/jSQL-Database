@@ -16,8 +16,8 @@ public class Main {
 			if (getSqlFiles) {
 				sqlFiles.add(args[i]);
 			}
-			else if (args[i] == "--data") {
-				dataDir = args[i+1];
+			else if (args[i].equals("--data")) {
+				dataDir = args[i++];
 				getSqlFiles = true;
 			}
 		}
