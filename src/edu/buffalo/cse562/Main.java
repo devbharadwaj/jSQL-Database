@@ -5,9 +5,10 @@ import java.util.ArrayList;
 public class Main {
 
 	public static void main(String[] args) {
-		String dataDir;
+		String dataDir = null;
 		ArrayList<String> sqlFiles = new ArrayList<>();
 		boolean getSqlFiles = false;
+		
 		
 		for (int i = 0; i < args.length; i++) {
 			if (getSqlFiles) {
@@ -18,9 +19,9 @@ public class Main {
 				getSqlFiles = true;
 			}
 		}
+		QueryRunner queryRunner = new QueryRunner(dataDir, sqlFiles);
+		queryRunner.queryExecute();
 		
-		
-
 	}
 
 }
