@@ -2,6 +2,8 @@ package edu.buffalo.cse562.visitors;
 
 import java.util.List;
 
+import edu.buffalo.cse562.schema.Schema;
+
 import net.sf.jsqlparser.statement.StatementVisitor;
 import net.sf.jsqlparser.statement.create.table.ColumnDefinition;
 import net.sf.jsqlparser.statement.create.table.CreateTable;
@@ -15,14 +17,16 @@ import net.sf.jsqlparser.statement.update.Update;
 
 public class MyStatementVisitor implements StatementVisitor {
 	
+	Schema schema;
+	
 	@Override
 	public void visit(CreateTable arg0) {
-		System.out.println("Create table");
+		String tableName = arg0.getTable().getName();
+		schema = new Schema(tableName);
 		List<ColumnDefinition> columnDefinitions = arg0.getColumnDefinitions();
 		for (ColumnDefinition columnName : columnDefinitions) {
-			System.out.println(columnName.getColumnName());
+			schema.addColumns(tableName, columnName.getColumnName(), columnName.getColDataType().toString());
 		}
-		throw new UnsupportedOperationException("Not supported yet."); 
 	}
 
 	@Override

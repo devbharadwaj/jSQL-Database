@@ -12,6 +12,7 @@ public class Schema {
 	 * Create a Schema for a table by giving it a unique name 
 	 */
 	public Schema(String tableName) {
+		tables = new HashMap<>();
 		ArrayList<Pair> allColumns = new ArrayList<>();
 		tables.put(tableName, allColumns);
 	}
