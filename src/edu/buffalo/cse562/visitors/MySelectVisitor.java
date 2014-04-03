@@ -1,5 +1,6 @@
 package edu.buffalo.cse562.visitors;
 
+import edu.buffalo.cse562.logicalplan.OperatorTree;
 import edu.buffalo.cse562.schema.Schema;
 import net.sf.jsqlparser.statement.select.PlainSelect;
 import net.sf.jsqlparser.statement.select.SelectVisitor;
@@ -14,9 +15,9 @@ public class MySelectVisitor implements SelectVisitor {
 	}
 
 	@Override
-	public void visit(PlainSelect arg0) {
-		//start here
-		// TODO Auto-generated method stub
+	public void visit(PlainSelect plainSelect) {
+		OperatorTree opTree = new OperatorTree(schema, plainSelect);
+		// Asynchronous Push Operator Tree - multi-threading
 
 	}
 
