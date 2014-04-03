@@ -12,6 +12,7 @@ import net.sf.jsqlparser.statement.drop.Drop;
 import net.sf.jsqlparser.statement.insert.Insert;
 import net.sf.jsqlparser.statement.replace.Replace;
 import net.sf.jsqlparser.statement.select.Select;
+import net.sf.jsqlparser.statement.select.SelectBody;
 import net.sf.jsqlparser.statement.truncate.Truncate;
 import net.sf.jsqlparser.statement.update.Update;
 
@@ -31,7 +32,9 @@ public class MyStatementVisitor implements StatementVisitor {
 
 	@Override
 	public void visit(Select arg0) {
-		throw new UnsupportedOperationException("Not supported yet."); 
+		SelectBody selectBody = arg0.getSelectBody();
+		MySelectVisitor mySelect = new MySelectVisitor(schema);
+		selectBody.accept(mySelect);
 	}
 
 	@Override
