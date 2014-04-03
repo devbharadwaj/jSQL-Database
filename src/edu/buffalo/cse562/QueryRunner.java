@@ -31,7 +31,7 @@ public class QueryRunner {
 			CCJSqlParser parser = new CCJSqlParser(sqlFile);
 			Statement statement = parser.Statement();
 			MyStatementVisitor statementVisitor = new MyStatementVisitor();
-			
+			statement.accept(statementVisitor);
 		}
 	}
 
